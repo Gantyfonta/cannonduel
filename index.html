@@ -184,6 +184,51 @@ kbd { font-family: var(--display); background: #fff; color: var(--slate); border
       </div>
     </div>
   </section>
+  <!-- Add this right before </main> -->
+<div class="overlay" id="editorModal" hidden style="z-index: 100;">
+  <div class="ocard" style="width: 88cqw; max-height: 88vh; overflow-y: auto; text-align: left; justify-items: stretch; gap: 1rem; padding: 2rem;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <div class="name" style="font-size: 2.2rem;">Projectile Editor</div>
+      <button id="closeEditorBtn" type="button" style="border: 0; background: #ff5f59; color: #fff; font-size: 1rem; padding: .4em 1em; border-radius: 99px;">✕ Close</button>
+    </div>
+
+    <!-- Active List -->
+    <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 12px;">
+      <b style="color: var(--teal); font-size: 1.1rem; display: block; margin-bottom: 8px;">Existing Projectiles</b>
+      <div id="editorProjList" style="display: grid; gap: 8px; max-height: 160px; overflow-y: auto;"></div>
+    </div>
+
+    <!-- Form -->
+    <form id="projForm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; background: rgba(0,0,0,0.2); padding: 14px; border-radius: 12px;">
+      <div style="grid-column: span 2;"><b style="color: #ffe08a;">Create / Edit Projectile</b></div>
+      
+      <label>ID / Key:<br><input type="text" id="f_id" required style="width:100%; padding:6px; border-radius:6px; border:none;" placeholder="e.g. plasma"></label>
+      <label>Name:<br><input type="text" id="f_name" required style="width:100%; padding:6px; border-radius:6px; border:none;" placeholder="Plasma Orb"></label>
+      
+      <label>Radius (px):<br><input type="number" id="f_r" value="10" step="1" style="width:100%; padding:6px; border-radius:6px; border:none;"></label>
+      <label>Blast Radius (px):<br><input type="number" id="f_blast" value="40" step="1" style="width:100%; padding:6px; border-radius:6px; border:none;"></label>
+      
+      <label>Gravity Multiplier:<br><input type="number" id="f_gravity" value="1.0" step="0.1" style="width:100%; padding:6px; border-radius:6px; border:none;"></label>
+      <label>Air Resistance:<br><input type="number" id="f_airRes" value="0" step="0.01" style="width:100%; padding:6px; border-radius:6px; border:none;"></label>
+      
+      <label>Max Bounces:<br><input type="number" id="f_bounces" value="0" step="1" style="width:100%; padding:6px; border-radius:6px; border:none;"></label>
+      <label>Bounciness (0 - 1):<br><input type="number" id="f_bounciness" value="0.6" step="0.05" style="width:100%; padding:6px; border-radius:6px; border:none;"></label>
+      
+      <label>Base Speed:<br><input type="number" id="f_speedBase" value="210" step="10" style="width:100%; padding:6px; border-radius:6px; border:none;"></label>
+      <label>Power Speed Mult:<br><input type="number" id="f_speedMult" value="690" step="10" style="width:100%; padding:6px; border-radius:6px; border:none;"></label>
+
+      <div style="grid-column: span 2;">
+        <label>Description:<br><input type="text" id="f_desc" style="width:100%; padding:6px; border-radius:6px; border:none;" placeholder="Short description..."></label>
+      </div>
+
+      <div style="grid-column: span 2;">
+        <label>Custom Color (Hex):<br><input type="color" id="f_color" value="#14b8f2" style="width:100%; height:36px; border:none; border-radius:6px; cursor:pointer;"></label>
+      </div>
+
+      <button class="btn" type="submit" style="grid-column: span 2; font-size: 1.2rem; margin-top: 6px;">SAVE PROJECTILE</button>
+    </form>
+  </div>
+</div>
 </main>
 
 <script>
